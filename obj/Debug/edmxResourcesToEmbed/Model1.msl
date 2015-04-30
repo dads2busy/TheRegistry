@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuestionnaireSysDALQuestionnaireContextModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.Answer">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+          <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+          <ScalarProperty Name="QTypeName" ColumnName="QTypeName" />
+          <ScalarProperty Name="selectedValue" ColumnName="selectedValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppSettings">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.AppSetting">
+        <MappingFragment StoreEntitySet="AppSettings">
+          <ScalarProperty Name="AppSettingId" ColumnName="AppSettingId" />
+          <ScalarProperty Name="AppSettingName" ColumnName="AppSettingName" />
+          <ScalarProperty Name="AppSettingValue" ColumnName="AppSettingValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.File">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="QuestionnaireQCategoryId" ColumnName="QuestionnaireQCategoryId" />
+          <ScalarProperty Name="QCategoryName" ColumnName="QCategoryName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FileBytes" ColumnName="FileBytes" />
+          <ScalarProperty Name="QCategorySubOrdinal" ColumnName="QCategorySubOrdinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LatticeItems">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.LatticeItem">
+        <MappingFragment StoreEntitySet="LatticeItems">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Step" ColumnName="Step" />
+          <ScalarProperty Name="LatticeLevel" ColumnName="LatticeLevel" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="DropdownText" ColumnName="DropdownText" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QCategories">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.QCategory">
+        <MappingFragment StoreEntitySet="QCategories">
+          <ScalarProperty Name="QCategoryId" ColumnName="QCategoryId" />
+          <ScalarProperty Name="QCategoryName" ColumnName="QCategoryName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="Repeatable" ColumnName="Repeatable" />
+          <ScalarProperty Name="Uploads" ColumnName="Uploads" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QTypes">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.QType">
+        <MappingFragment StoreEntitySet="QTypes">
+          <ScalarProperty Name="QTypeName" ColumnName="QTypeName" />
+          <ScalarProperty Name="QTypeResponse" ColumnName="QTypeResponse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionnaireQCategories">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.QuestionnaireQCategory">
+        <MappingFragment StoreEntitySet="QuestionnaireQCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="QCategoryId" ColumnName="QCategoryId" />
+          <ScalarProperty Name="Ordinal" ColumnName="Ordinal" />
+          <ScalarProperty Name="SubOrdinal" ColumnName="SubOrdinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionnaireQuestions">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.QuestionnaireQuestion">
+        <MappingFragment StoreEntitySet="QuestionnaireQuestions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Ordinal" ColumnName="Ordinal" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="QQCategoryId" ColumnName="QQCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questionnaires">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.Questionnaire">
+        <MappingFragment StoreEntitySet="Questionnaires">
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="QuestionnaireName" ColumnName="QuestionnaireName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.Question">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="QTitle" ColumnName="QTitle" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QTypeName" ColumnName="QTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responses">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.Respons">
+        <MappingFragment StoreEntitySet="Responses">
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QTitle" ColumnName="QTitle" />
+          <ScalarProperty Name="QTypeResponse" ColumnName="QTypeResponse" />
+          <ScalarProperty Name="QuestionnaireQuestionId" ColumnName="QuestionnaireQuestionId" />
+          <ScalarProperty Name="QQOrd" ColumnName="QQOrd" />
+          <ScalarProperty Name="QCategoryId" ColumnName="QCategoryId" />
+          <ScalarProperty Name="QCategoryName" ColumnName="QCategoryName" />
+          <ScalarProperty Name="Ordinal" ColumnName="Ordinal" />
+          <ScalarProperty Name="SubOrdinal" ColumnName="SubOrdinal" />
+          <ScalarProperty Name="ResponseItem" ColumnName="ResponseItem" />
+          <ScalarProperty Name="QuestionnaireQCategoryId" ColumnName="QuestionnaireQCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLevels">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.UserLevel">
+        <MappingFragment StoreEntitySet="UserLevels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FinalStepLevel" ColumnName="FinalStepLevel" />
+          <ScalarProperty Name="FinalStepLevelDate" ColumnName="FinalStepLevelDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Verifications">
+      <EntityTypeMapping TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.Verification">
+        <MappingFragment StoreEntitySet="Verifications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="QCategoryId" ColumnName="QCategoryId" />
+          <ScalarProperty Name="SubOrdinal" ColumnName="SubOrdinal" />
+          <ScalarProperty Name="ItemInfo" ColumnName="ItemInfo" />
+          <ScalarProperty Name="ItemVerified" ColumnName="ItemVerified" />
+          <ScalarProperty Name="ItemStepLevel" ColumnName="ItemStepLevel" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Editable" ColumnName="Editable" />
+          <ScalarProperty Name="QQCategoryId" ColumnName="QQCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ResponseAnswers" TypeName="QuestionnaireSys.DAL.QuestionnaireContextModel.ResponseAnswers" StoreEntitySet="ResponseAnswers">
+      <EndProperty Name="Answers">
+        <ScalarProperty Name="AnswerId" ColumnName="Answer_AnswerId" />
+      </EndProperty>
+      <EndProperty Name="Responses">
+        <ScalarProperty Name="ResponseId" ColumnName="Response_ResponseId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

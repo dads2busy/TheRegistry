@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuestionnaireSys.DAL.QuestionnaireContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnswerText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QTypeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="selectedValue" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="QType" Relationship="Self.FK_dbo_Answers_dbo_QTypes_QTypeName" FromRole="Answers" ToRole="QTypes" />
+    <NavigationProperty Name="Responses" Relationship="Self.ResponseAnswers" FromRole="Answers" ToRole="Responses" />
+  </EntityType>
+  <EntityType Name="AppSetting">
+    <Key>
+      <PropertyRef Name="AppSettingId" />
+    </Key>
+    <Property Name="AppSettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppSettingName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AppSettingValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="FileId" />
+    </Key>
+    <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireQCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="QCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="QCategorySubOrdinal" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LatticeItem">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Step" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LatticeLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ItemType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DropdownText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ItemName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QCategory">
+    <Key>
+      <PropertyRef Name="QCategoryId" />
+    </Key>
+    <Property Name="QCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Repeatable" Type="Boolean" Nullable="false" />
+    <Property Name="Uploads" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="QuestionnaireQCategories" Relationship="Self.FK_dbo_QuestionnaireQCategories_dbo_QCategories_QCategoryId" FromRole="QCategories" ToRole="QuestionnaireQCategories" />
+  </EntityType>
+  <EntityType Name="QType">
+    <Key>
+      <PropertyRef Name="QTypeName" />
+    </Key>
+    <Property Name="QTypeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QTypeResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_dbo_Answers_dbo_QTypes_QTypeName" FromRole="QTypes" ToRole="Answers" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_dbo_Questions_dbo_QTypes_QTypeName" FromRole="QTypes" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="QuestionnaireQCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireId" Type="Int32" />
+    <Property Name="QCategoryId" Type="Int32" />
+    <Property Name="Ordinal" Type="Int32" Nullable="false" />
+    <Property Name="SubOrdinal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="QCategory" Relationship="Self.FK_dbo_QuestionnaireQCategories_dbo_QCategories_QCategoryId" FromRole="QuestionnaireQCategories" ToRole="QCategories" />
+    <NavigationProperty Name="Questionnaire" Relationship="Self.FK_dbo_QuestionnaireQCategories_dbo_Questionnaires_QuestionnaireId" FromRole="QuestionnaireQCategories" ToRole="Questionnaires" />
+    <NavigationProperty Name="QuestionnaireQuestions" Relationship="Self.FK_dbo_QuestionnaireQuestions_dbo_QuestionnaireQCategories_QQCategoryId" FromRole="QuestionnaireQCategories" ToRole="QuestionnaireQuestions" />
+  </EntityType>
+  <EntityType Name="QuestionnaireQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Ordinal" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireId" Type="Int32" />
+    <Property Name="QuestionId" Type="Int32" />
+    <Property Name="QQCategoryId" Type="Int32" />
+    <NavigationProperty Name="QuestionnaireQCategory" Relationship="Self.FK_dbo_QuestionnaireQuestions_dbo_QuestionnaireQCategories_QQCategoryId" FromRole="QuestionnaireQuestions" ToRole="QuestionnaireQCategories" />
+    <NavigationProperty Name="Questionnaire" Relationship="Self.FK_dbo_QuestionnaireQuestions_dbo_Questionnaires_QuestionnaireId" FromRole="QuestionnaireQuestions" ToRole="Questionnaires" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_dbo_QuestionnaireQuestions_dbo_Questions_QuestionId" FromRole="QuestionnaireQuestions" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="Questionnaire">
+    <Key>
+      <PropertyRef Name="QuestionnaireId" />
+    </Key>
+    <Property Name="QuestionnaireId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionnaireName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QuestionnaireQCategories" Relationship="Self.FK_dbo_QuestionnaireQCategories_dbo_Questionnaires_QuestionnaireId" FromRole="Questionnaires" ToRole="QuestionnaireQCategories" />
+    <NavigationProperty Name="QuestionnaireQuestions" Relationship="Self.FK_dbo_QuestionnaireQuestions_dbo_Questionnaires_QuestionnaireId" FromRole="Questionnaires" ToRole="QuestionnaireQuestions" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QTypeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QType" Relationship="Self.FK_dbo_Questions_dbo_QTypes_QTypeName" FromRole="Questions" ToRole="QTypes" />
+    <NavigationProperty Name="QuestionnaireQuestions" Relationship="Self.FK_dbo_QuestionnaireQuestions_dbo_Questions_QuestionId" FromRole="Questions" ToRole="QuestionnaireQuestions" />
+  </EntityType>
+  <EntityType Name="Respons">
+    <Key>
+      <PropertyRef Name="ResponseId" />
+    </Key>
+    <Property Name="ResponseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QTypeResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionnaireQuestionId" Type="Int32" Nullable="false" />
+    <Property Name="QQOrd" Type="Int32" Nullable="false" />
+    <Property Name="QCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="QCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ordinal" Type="Int32" Nullable="false" />
+    <Property Name="SubOrdinal" Type="Int32" Nullable="false" />
+    <Property Name="ResponseItem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionnaireQCategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Answers" Relationship="Self.ResponseAnswers" FromRole="Responses" ToRole="Answers" />
+  </EntityType>
+  <EntityType Name="UserLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="FinalStepLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FinalStepLevelDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Verification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionnaireId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="QCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="SubOrdinal" Type="Int32" Nullable="false" />
+    <Property Name="ItemInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ItemVerified" Type="Boolean" Nullable="false" />
+    <Property Name="ItemStepLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Editable" Type="Boolean" Nullable="false" />
+    <Property Name="QQCategoryId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Answers_dbo_QTypes_QTypeName">
+    <End Role="QTypes" Type="Self.QType" Multiplicity="0..1" />
+    <End Role="Answers" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QTypes">
+        <PropertyRef Name="QTypeName" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="QTypeName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_QuestionnaireQCategories_dbo_QCategories_QCategoryId">
+    <End Role="QCategories" Type="Self.QCategory" Multiplicity="0..1" />
+    <End Role="QuestionnaireQCategories" Type="Self.QuestionnaireQCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QCategories">
+        <PropertyRef Name="QCategoryId" />
+      </Principal>
+      <Dependent Role="QuestionnaireQCategories">
+        <PropertyRef Name="QCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Questions_dbo_QTypes_QTypeName">
+    <End Role="QTypes" Type="Self.QType" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QTypes">
+        <PropertyRef Name="QTypeName" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="QTypeName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_QuestionnaireQCategories_dbo_Questionnaires_QuestionnaireId">
+    <End Role="Questionnaires" Type="Self.Questionnaire" Multiplicity="0..1" />
+    <End Role="QuestionnaireQCategories" Type="Self.QuestionnaireQCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questionnaires">
+        <PropertyRef Name="QuestionnaireId" />
+      </Principal>
+      <Dependent Role="QuestionnaireQCategories">
+        <PropertyRef Name="QuestionnaireId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_QuestionnaireQuestions_dbo_QuestionnaireQCategories_QQCategoryId">
+    <End Role="QuestionnaireQCategories" Type="Self.QuestionnaireQCategory" Multiplicity="0..1" />
+    <End Role="QuestionnaireQuestions" Type="Self.QuestionnaireQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionnaireQCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuestionnaireQuestions">
+        <PropertyRef Name="QQCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_QuestionnaireQuestions_dbo_Questionnaires_QuestionnaireId">
+    <End Role="Questionnaires" Type="Self.Questionnaire" Multiplicity="0..1" />
+    <End Role="QuestionnaireQuestions" Type="Self.QuestionnaireQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questionnaires">
+        <PropertyRef Name="QuestionnaireId" />
+      </Principal>
+      <Dependent Role="QuestionnaireQuestions">
+        <PropertyRef Name="QuestionnaireId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_QuestionnaireQuestions_dbo_Questions_QuestionId">
+    <End Role="Questions" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="QuestionnaireQuestions" Type="Self.QuestionnaireQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="QuestionnaireQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ResponseAnswers">
+    <End Role="Answers" Type="Self.Answer" Multiplicity="*" />
+    <End Role="Responses" Type="Self.Respons" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="AppSettings" EntityType="Self.AppSetting" />
+    <EntitySet Name="Files" EntityType="Self.File" />
+    <EntitySet Name="LatticeItems" EntityType="Self.LatticeItem" />
+    <EntitySet Name="QCategories" EntityType="Self.QCategory" />
+    <EntitySet Name="QTypes" EntityType="Self.QType" />
+    <EntitySet Name="QuestionnaireQCategories" EntityType="Self.QuestionnaireQCategory" />
+    <EntitySet Name="QuestionnaireQuestions" EntityType="Self.QuestionnaireQuestion" />
+    <EntitySet Name="Questionnaires" EntityType="Self.Questionnaire" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Responses" EntityType="Self.Respons" />
+    <EntitySet Name="UserLevels" EntityType="Self.UserLevel" />
+    <EntitySet Name="Verifications" EntityType="Self.Verification" />
+    <AssociationSet Name="FK_dbo_Answers_dbo_QTypes_QTypeName" Association="Self.FK_dbo_Answers_dbo_QTypes_QTypeName">
+      <End Role="QTypes" EntitySet="QTypes" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_QuestionnaireQCategories_dbo_QCategories_QCategoryId" Association="Self.FK_dbo_QuestionnaireQCategories_dbo_QCategories_QCategoryId">
+      <End Role="QCategories" EntitySet="QCategories" />
+      <End Role="QuestionnaireQCategories" EntitySet="QuestionnaireQCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Questions_dbo_QTypes_QTypeName" Association="Self.FK_dbo_Questions_dbo_QTypes_QTypeName">
+      <End Role="QTypes" EntitySet="QTypes" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_QuestionnaireQCategories_dbo_Questionnaires_QuestionnaireId" Association="Self.FK_dbo_QuestionnaireQCategories_dbo_Questionnaires_QuestionnaireId">
+      <End Role="Questionnaires" EntitySet="Questionnaires" />
+      <End Role="QuestionnaireQCategories" EntitySet="QuestionnaireQCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_QuestionnaireQuestions_dbo_QuestionnaireQCategories_QQCategoryId" Association="Self.FK_dbo_QuestionnaireQuestions_dbo_QuestionnaireQCategories_QQCategoryId">
+      <End Role="QuestionnaireQCategories" EntitySet="QuestionnaireQCategories" />
+      <End Role="QuestionnaireQuestions" EntitySet="QuestionnaireQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_QuestionnaireQuestions_dbo_Questionnaires_QuestionnaireId" Association="Self.FK_dbo_QuestionnaireQuestions_dbo_Questionnaires_QuestionnaireId">
+      <End Role="Questionnaires" EntitySet="Questionnaires" />
+      <End Role="QuestionnaireQuestions" EntitySet="QuestionnaireQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_QuestionnaireQuestions_dbo_Questions_QuestionId" Association="Self.FK_dbo_QuestionnaireQuestions_dbo_Questions_QuestionId">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="QuestionnaireQuestions" EntitySet="QuestionnaireQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="ResponseAnswers" Association="Self.ResponseAnswers">
+      <End Role="Answers" EntitySet="Answers" />
+      <End Role="Responses" EntitySet="Responses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
