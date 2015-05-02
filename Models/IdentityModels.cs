@@ -26,6 +26,13 @@ namespace Questionnaire2.Models
             // Add any custom User properties/code here
         }
 
+        [Display(Name="First Name")]
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Display(Name = "Middle Initial")]
+        public string MiddleInitial { get; set; }
+
 
         public async Task<ClaimsIdentity>
             GenerateUserIdentityAsync(ApplicationUserManager manager)

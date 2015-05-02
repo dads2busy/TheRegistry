@@ -15,6 +15,15 @@ namespace Questionnaire2.Models
         public string ReturnUrl { get; set; }
     }
 
+    public class RegisterExternalLoginModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        public string ExternalLoginData { get; set; }
+    }
+
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }
@@ -76,6 +85,17 @@ namespace Questionnaire2.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Middle Initial")]
+        public string MiddleInitial { get; set; }
     }
 
     public class ResetPasswordViewModel

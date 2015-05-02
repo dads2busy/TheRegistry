@@ -90,7 +90,12 @@ namespace Questionnaire2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email };
+                var user = new ApplicationUser { UserName = userViewModel.Email
+                                                  , Email = userViewModel.Email
+                                                  , FirstName = userViewModel.FirstName
+                                                  , LastName = userViewModel.LastName
+                                                  , MiddleInitial = userViewModel.MiddleInitial
+                };
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
                 //Add User to the selected Roles 
@@ -140,6 +145,9 @@ namespace Questionnaire2.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                MiddleInitial = user.MiddleInitial,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -153,7 +161,7 @@ namespace Questionnaire2.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,FirstName,LastName,MiddleInitial")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -165,6 +173,9 @@ namespace Questionnaire2.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+                user.FirstName = editUser.FirstName;
+                user.LastName = editUser.LastName;
+                user.MiddleInitial = editUser.MiddleInitial;
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
