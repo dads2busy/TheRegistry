@@ -19,7 +19,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Questionnaire2.Controllers
 {
-    [Authorize(Roles = "Administrator, CareProvider")]
+    [Authorize(Roles = "Admin, CareProvider")]
     public class ResponseController : Controller
     {
         private readonly Entities _db = new Entities();

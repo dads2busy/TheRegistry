@@ -111,7 +111,6 @@ C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\System.Web.WebPages.Razor.xml
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\obj\Debug\TheRegistry.dll
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\obj\Debug\TheRegistry.pdb
-C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\obj\Debug\TheRegistry.csprojResolveAssemblyReference.cache
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\DocX.dll
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\itextsharp.dll
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\Spire.Doc.dll
@@ -123,3 +122,6 @@ C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\HtmlAgilityPack.dll
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\HtmlAgilityPack.pdb
 C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\HtmlAgilityPack.xml
+C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\EPPlus.dll
+C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\bin\EPPlus.xml
+C:\Users\aaron\Documents\Visual Studio 2013\Projects\TheRegistry\TheRegistry\obj\Debug\TheRegistry.csprojResolveAssemblyReference.cache

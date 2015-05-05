@@ -102,8 +102,8 @@ namespace Questionnaire2.Models
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
             myMessage.From = new System.Net.Mail.MailAddress(
-                                "aschroed@vt.edu", "Aaron S.");
-            myMessage.Subject = "This is the Subject"; // message.Subject;
+                                "aschroed@vt.edu", "Virginia Child Care Professional Development Registry");
+            myMessage.Subject = "Please Verify Your Email Address"; // message.Subject;
             myMessage.Text = message.Body;
             myMessage.Html = message.Body;
 
@@ -172,7 +172,7 @@ namespace Questionnaire2.Models
 
             var user = userManager.FindByName(name);
             if (user == null) {
-                user = new ApplicationUser { UserName = name, Email = name };
+                user = new ApplicationUser { UserName = name, Email = name, DOB = new DateTime(1900, 1, 1).ToString() };
                 var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }

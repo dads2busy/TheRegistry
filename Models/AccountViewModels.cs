@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Questionnaire2.Models
@@ -87,6 +88,11 @@ namespace Questionnaire2.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "The Phone Number field is not a valid phone number.")]
+        [Display(Name = "Phone Number (no dashes)")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
@@ -96,6 +102,16 @@ namespace Questionnaire2.Models
 
         [Display(Name = "Middle Initial")]
         public string MiddleInitial { get; set; }
+
+        [Required]
+        [StringLength(5)]
+        [Display(Name = "Zip Code")]
+        public string ZIP { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of Birth")]
+        public string DOB { get; set; }
     }
 
     public class ResetPasswordViewModel

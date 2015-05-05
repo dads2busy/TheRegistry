@@ -21,13 +21,13 @@ using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
 
 namespace Questionnaire2.Controllers
-{
-    [Authorize(Roles = "Admin,Verifier")]
+{  
     public class VerificationController : Controller
     {
         private readonly Entities _db = new Entities();
         private readonly ApplicationDbContext _udb = new ApplicationDbContext();
 
+        [Authorize(Roles = "Admin,Verifier")]
         public ActionResult Index()
         {
             var users = new List<UserInfo>();
@@ -71,6 +71,7 @@ namespace Questionnaire2.Controllers
             return View();
         }
 
+        [Authorize(Roles = "CareProvider")]
         public ActionResult Verification()
         {
             var idBool = new IDandBool();
@@ -86,6 +87,7 @@ namespace Questionnaire2.Controllers
             return View(idBool);
         }
 
+        [Authorize(Roles = "CareProvider")]
         public ActionResult SendToVerification(int id)
         {
             var userGuid = new Guid(User.Identity.GetUserId()); //WebSecurity.GetUserId(User.Identity.Name);

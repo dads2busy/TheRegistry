@@ -26,12 +26,18 @@ namespace Questionnaire2.Models
             // Add any custom User properties/code here
         }
 
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
         [Display(Name="First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Middle Initial")]
         public string MiddleInitial { get; set; }
+        [Display(Name = "Zip Code")]
+        public string ZIP { get; set; }
+        [Display(Name = "Date of Birth")]
+        public string DOB { get; set; }
 
 
         public async Task<ClaimsIdentity>
@@ -74,7 +80,8 @@ namespace Questionnaire2.Models
 
         static ApplicationDbContext()
         {
-            Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+            //Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public static ApplicationDbContext Create()

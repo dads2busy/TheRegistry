@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -24,6 +25,9 @@ namespace Questionnaire2.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleInitial { get; set; }
+        public string PhoneNumber { get; set; }
+        public string ZIP { get; set; }
+        public string DOB { get; set; }
 
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }

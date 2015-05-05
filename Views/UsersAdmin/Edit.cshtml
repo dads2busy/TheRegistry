@@ -45,6 +45,27 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DOB)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ZIP, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ZIP, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ZIP)
+            </div>
+        </div>
+        <div class="form-group">
             @Html.Label("Roles", new { @class = "control-label col-md-2" })
             <span class=" col-md-10">
                 @foreach (var item in Model.RolesList)

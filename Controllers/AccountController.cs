@@ -154,6 +154,9 @@ namespace Questionnaire2.Controllers
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.MiddleInitial = model.MiddleInitial;
+                user.PhoneNumber = model.PhoneNumber;
+                user.DOB = model.DOB;
+                user.ZIP = model.ZIP;
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

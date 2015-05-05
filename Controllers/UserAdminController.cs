@@ -95,6 +95,9 @@ namespace Questionnaire2.Controllers
                                                   , FirstName = userViewModel.FirstName
                                                   , LastName = userViewModel.LastName
                                                   , MiddleInitial = userViewModel.MiddleInitial
+                                                  , PhoneNumber = userViewModel.PhoneNumber
+                                                  , ZIP = userViewModel.ZIP
+                                                  , DOB = userViewModel.DOB
                 };
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
@@ -148,6 +151,9 @@ namespace Questionnaire2.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 MiddleInitial = user.MiddleInitial,
+                PhoneNumber = user.PhoneNumber,
+                ZIP = user.ZIP,
+                DOB = user.DOB,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -161,7 +167,7 @@ namespace Questionnaire2.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,FirstName,LastName,MiddleInitial")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,FirstName,LastName,MiddleInitial,PhoneNumber,ZIP,DOB")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -176,6 +182,9 @@ namespace Questionnaire2.Controllers
                 user.FirstName = editUser.FirstName;
                 user.LastName = editUser.LastName;
                 user.MiddleInitial = editUser.MiddleInitial;
+                user.PhoneNumber = editUser.PhoneNumber;
+                user.ZIP = editUser.ZIP;
+                user.DOB = editUser.DOB;
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
